@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, SwipeRefreshLayout.
         binding.rankRv.adapter = adapter
         binding.rankSwipeLayout.setOnRefreshListener(this)
 
-
         setContentView(binding.root)
 
         presenter.loadData()
@@ -34,6 +33,7 @@ class MainActivity : AppCompatActivity(), MainContract.View, SwipeRefreshLayout.
     }
 
     override fun onRefresh() {
+        adapter.rankItems.clear()
         presenter.loadData()
 
         binding.rankSwipeLayout.isRefreshing = false
